@@ -172,7 +172,23 @@
 	icon_state = "sand"
 
 /turf/simulated/floor/beach/sand/desert
-	icon_state = "desert"
+	name = "Desert"
+	icon_state = "desert0"
+
+/turf/simulated/floor/desert
+	name = "Desert"
+	icon_state = "desert0"
+
+	New()
+		icon_state = "desert[pick("0","1","2","3","4","5")]"
+		..()
+		spawn(4)
+			if(src)
+				update_icon()
+				for(var/direction in cardinal)
+					if(istype(get_step(src,direction),/turf/simulated/floor))
+						var/turf/simulated/floor/FF = get_step(src,direction)
+						FF.update_icon() //so siding get updated properly
 
 /turf/simulated/floor/beach/coastline
 	name = "Coastline"
@@ -189,6 +205,14 @@
 /turf/simulated/floor/beach/water/New()
 	..()
 	overlays += image("icon"='icons/misc/beach.dmi',"icon_state"="water5","layer"=MOB_LAYER+0.1)
+
+/turf/simulated/floor/lava
+	name = "lava"
+	icon_state = "lava"
+	lava = 1
+	light_range = 2
+	light_color = "#CC0000"
+
 
 /turf/simulated/floor/grass
 	name = "Grass patch"

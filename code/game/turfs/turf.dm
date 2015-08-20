@@ -162,6 +162,8 @@
 	return 0
 /turf/proc/is_grass_floor()
 	return 0
+/turf/proc/is_desert_floor()
+	return 0
 /turf/proc/is_wood_floor()
 	return 0
 /turf/proc/is_carpet_floor()
